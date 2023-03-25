@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/itemid"
+        android:layout_width="60dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textColor="@color/purple_700"
+        android:text="ID"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/itemname"
+        android:gravity="center"
+        android:layout_width="143dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/purple_700"
+        android:text="Name"
+        app:layout_constraintStart_toEndOf="@+id/itemid"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/itemstatus"
+        android:layout_width="87dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="38dp"
+        android:textColor="@color/purple_700"
+        android:gravity="center"
+        android:text="Status"
+        app:layout_constraintBottom_toBottomOf="@+id/itemname"
+        app:layout_constraintStart_toEndOf="@+id/itemname"
+        app:layout_constraintTop_toTopOf="@+id/itemname"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
