@@ -1,7 +1,5 @@
 package com.e.myapplication
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,7 +9,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerview: RecyclerView
@@ -25,10 +22,11 @@ class MainActivity : AppCompatActivity() {
         recyclerview.layoutManager=LinearLayoutManager(this)
         adapter=CharacterAdapter()
         recyclerview.adapter=adapter
+        listFragment=supportFragmentManager.findFragmentById(R.id.fragmentcontainerList) as ListFragment
 
         getRetrofit()
         listofCharacters()
-        listFragment=supportFragmentManager.findFragmentById(R.id.fragmentcontainerList) as ListFragment
+
 
     }
 
@@ -43,12 +41,14 @@ class MainActivity : AppCompatActivity() {
                                 as MutableList<CharacterClass>
                     adapter.submitList(listofcharacters)
                     adapter.OnItemSelectedListener={
-                        val b= Bundle()
-                        b.putString("gender", it.gender)
-                        b.putString("image",it.image)
-                        b.putString("type",it.type)
-                        b.putString("species",it.species)
-                        listFragment.arguments=b
+                        var bundle = Bundle().apply {
+                            putString("gender", it.gender)
+                            putString("image",it.image)
+                            putString("type",it.type)
+                            putString("species",it.species)
+                        }
+                        listFragment.arguments=bundle
+
 
                     }
                 } else {
